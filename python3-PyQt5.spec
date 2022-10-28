@@ -38,10 +38,10 @@ BuildRequires:	Qt5Nfc-devel >= %{qt_ver}
 BuildRequires:	Qt5OpenGL-devel >= %{qt_ver}
 BuildRequires:	Qt5Positioning-devel >= %{qt_ver}
 BuildRequires:	Qt5PrintSupport-devel
-BuildRequires:	Qt5RemoteObjects-devel >= %{qt_ver}
 BuildRequires:	Qt5Qml-devel >= %{qt_ver}
 BuildRequires:	Qt5Quick-devel >= %{qt_ver}
 BuildRequires:	Qt5Quick3D-devel >= %{qt_ver}
+BuildRequires:	Qt5RemoteObjects-devel >= %{qt_ver}
 BuildRequires:	Qt5Sensors-devel >= %{qt_ver}
 BuildRequires:	Qt5SerialPort-devel >= %{qt_ver}
 BuildRequires:	Qt5Sql-devel >= %{qt_ver}
@@ -57,8 +57,8 @@ BuildRequires:	Qt5Xml-devel >= %{qt_ver}
 BuildRequires:	Qt5XmlPatterns-devel >= %{qt_ver}
 BuildRequires:	dbus-devel >= 1
 BuildRequires:	pkgconfig
-BuildRequires:	python3-PyQt-builder
 BuildRequires:	python-dbus-devel >= 0.80
+BuildRequires:	python3-PyQt-builder
 BuildRequires:	python3-dbus >= 0.80
 BuildRequires:	qt5-build >= %{qt_ver}
 BuildRequires:	qt5-qmake >= %{qt_ver}
@@ -76,8 +76,8 @@ are implemented as a set of Python modules: Qt, QtBluetooth, QtCore,
 QtDBus, QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
 QtMultimediaWidgets, QtNetwork, QtNfc, QtOpenGL, QtPositioning,
 QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
-QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel,
-QtWebSockets, QtX11Extras and QtXmlPatterns.
+QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebSockets,
+QtX11Extras and QtXmlPatterns.
 
 %description -l pl.UTF-8
 PyQt5 to zbiór dowiązań do Qt5 dla Pythona. Dowiązania zostały
@@ -85,16 +85,16 @@ zaimplementowane jako moduły Pythona: Qt, QtBluetooth, QtCore, QtDBus,
 QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
 QtMultimediaWidgets, QtNetwork, QtNfc, QtOpenGL, QtPositioning,
 QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
-QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel,
-QtWebSockets, QtX11Extras oraz QtXmlPatterns.
+QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebSockets,
+QtX11Extras oraz QtXmlPatterns.
 
 %package uic
 Summary:	pyuic5 development tool for Python
 Summary(pl.UTF-8):	Narzędzie programistyczne pyuic5 dla Pythona
 Group:		Development/Tools
+Requires:	%{name} = %{version}-%{release}
 Requires:	Qt5Core >= %{qt_ver}
 Requires:	Qt5Xml >= %{qt_ver}
-Requires:	%{name} = %{version}-%{release}
 Obsoletes:	python-PyQt5-uic < 5.15.7-1
 
 %description uic
