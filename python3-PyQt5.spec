@@ -14,13 +14,13 @@
 Summary:	Python bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona do toolkitu Qt5
 Name:		python3-%{module}
-Version:	5.15.7
-Release:	2
+Version:	5.15.8
+Release:	1
 License:	GPL v3
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/PyQt5/
 Source0:	https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-%{version}.tar.gz
-# Source0-md5:	ae2c68e38b9b36fdf5f932419353a2b3
+# Source0-md5:	dab5df4f1e724f42af62542ade5124c7
 URL:		https://riverbankcomputing.com/software/pyqt/intro
 # most of BR comes from configure.py
 BuildRequires:	Qt5Bluetooth-devel >= %{qt_ver}
