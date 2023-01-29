@@ -64,7 +64,7 @@ BuildRequires:	python3-devel
 BuildRequires:	qt5-build >= %{qt_ver}
 BuildRequires:	qt5-qmake >= %{qt_ver}
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 2.016
 BuildRequires:	sip6 >= %{sip_ver}
 Requires:	python3-dbus >= 0.80
 Requires:	python3-libs
@@ -175,7 +175,7 @@ sip-build --build-dir build-py3 \
 	--verbose \
 	--confirm-license \
 	--pep484-pyi \
-	--qmake="%{_bindir}/qmake-qt5" \
+	--qmake="%{_qt5_qmake}" \
 	--scripts-dir=%{_bindir}
 
 %install
