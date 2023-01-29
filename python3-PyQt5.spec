@@ -63,6 +63,7 @@ BuildRequires:	python3-dbus >= 0.80
 BuildRequires:	python3-devel
 BuildRequires:	qt5-build >= %{qt_ver}
 BuildRequires:	qt5-qmake >= %{qt_ver}
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 2.016
 BuildRequires:	sip6 >= %{sip_ver}
@@ -126,6 +127,7 @@ Summary:	Examples for PyQt5
 Summary(pl.UTF-8):	Przykłady do PyQt5
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
+BuildArch:	noarch
 
 %description examples
 Examples code demonstrating how to use the Python bindings for Qt5.
