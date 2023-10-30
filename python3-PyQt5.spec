@@ -14,13 +14,13 @@
 Summary:	Python bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona do toolkitu Qt5
 Name:		python3-%{module}
-Version:	5.15.9
+Version:	5.15.10
 Release:	1
 License:	GPL v3
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/PyQt5/
 Source0:	https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-%{version}.tar.gz
-# Source0-md5:	9d97fc06b7ae75e654e946c49e07ff12
+# Source0-md5:	166d544d03b9a3098d62a489344ca1eb
 URL:		https://riverbankcomputing.com/software/pyqt/intro
 # most of BR comes from configure.py
 BuildRequires:	Qt5Bluetooth-devel >= %{qt_ver}
@@ -60,8 +60,8 @@ BuildRequires:	pkgconfig
 BuildRequires:	python-dbus-devel >= 0.80
 BuildRequires:	python3-PyQt-builder
 BuildRequires:	python3-dbus >= 0.80
-BuildRequires:	python3-devel
-BuildRequires:	python3-modules
+BuildRequires:	python3-devel >= 1:3.7
+BuildRequires:	python3-modules >= 1:3.7
 BuildRequires:	qt5-build >= %{qt_ver}
 BuildRequires:	qt5-qmake >= %{qt_ver}
 BuildRequires:	rpm-build >= 4.6
@@ -69,7 +69,7 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 2.016
 BuildRequires:	sip6 >= %{sip_ver}
 Requires:	python3-dbus >= 0.80
-Requires:	python3-libs
+Requires:	python3-libs >= 1:3.7
 Obsoletes:	python-PyQt5 < 5.15.7-1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
