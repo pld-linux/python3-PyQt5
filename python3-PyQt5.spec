@@ -61,6 +61,7 @@ BuildRequires:	python-dbus-devel >= 0.80
 BuildRequires:	python3-PyQt-builder
 BuildRequires:	python3-dbus >= 0.80
 BuildRequires:	python3-devel
+BuildRequires:	python3-modules
 BuildRequires:	qt5-build >= %{qt_ver}
 BuildRequires:	qt5-qmake >= %{qt_ver}
 BuildRequires:	rpm-build >= 4.6
