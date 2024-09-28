@@ -44,6 +44,7 @@ BuildRequires:	Qt5Quick3D-devel >= %{qt_ver}
 BuildRequires:	Qt5RemoteObjects-devel >= %{qt_ver}
 BuildRequires:	Qt5Sensors-devel >= %{qt_ver}
 BuildRequires:	Qt5SerialPort-devel >= %{qt_ver}
+BuildRequires:	Qt5Speech-devel >= %{qt_ver}
 BuildRequires:	Qt5Sql-devel >= %{qt_ver}
 BuildRequires:	Qt5Svg-devel >= %{qt_ver}
 BuildRequires:	Qt5Test-devel >= %{qt_ver}
@@ -79,8 +80,8 @@ are implemented as a set of Python modules: Qt, QtBluetooth, QtCore,
 QtDBus, QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
 QtMultimediaWidgets, QtNetwork, QtNfc, QtOpenGL, QtPositioning,
 QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
-QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebSockets,
-QtX11Extras and QtXmlPatterns.
+QtSerialPort, QtSql, QtSvg, QtTest, QtTextToSpeech, QtWebChannel,
+QtWebSockets, QtX11Extras and QtXmlPatterns.
 
 %description -l pl.UTF-8
 PyQt5 to zbiór dowiązań do Qt5 dla Pythona. Dowiązania zostały
@@ -88,8 +89,8 @@ zaimplementowane jako moduły Pythona: Qt, QtBluetooth, QtCore, QtDBus,
 QtDesigner, QtGui, QtHelp, QtLocation, QtMultimedia,
 QtMultimediaWidgets, QtNetwork, QtNfc, QtOpenGL, QtPositioning,
 QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
-QtSerialPort, QtSql, QtSvg, QtTest, QtWebChannel, QtWebSockets,
-QtX11Extras oraz QtXmlPatterns.
+QtSerialPort, QtSql, QtSvg, QtTest, QtTextToSpeech, QtWebChannel,
+QtWebSockets, QtX11Extras oraz QtXmlPatterns.
 
 %package uic
 Summary:	pyuic5 development tool for Python
@@ -230,6 +231,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtSql.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtSvg.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtTest.abi3.so
+%attr(755,root,root) %{py3_sitedir}/PyQt5/QtTextToSpeech.abi3.so
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebChannel.abi3.so
 %if %{with webkit}
 %attr(755,root,root) %{py3_sitedir}/PyQt5/QtWebKit.abi3.so
@@ -276,6 +278,7 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/PyQt5/QtSql.pyi
 %{py3_sitedir}/PyQt5/QtSvg.pyi
 %{py3_sitedir}/PyQt5/QtTest.pyi
+%{py3_sitedir}/PyQt5/QtTextToSpeech.pyi
 %{py3_sitedir}/PyQt5/QtWebChannel.pyi
 %if %{with webkit}
 %{py3_sitedir}/PyQt5/QtWebKit.pyi
