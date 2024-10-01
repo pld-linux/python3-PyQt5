@@ -2,6 +2,7 @@
 # Conditional build:
 %bcond_with	enginio		# Qt5Enginio support
 %bcond_without	webkit		# Qt5WebKit support
+%bcond_without	obsolete_py2	# whether to Obsolete python 2 packages
 
 %define		module	PyQt5
 # minimal required sip version
@@ -15,7 +16,7 @@ Summary:	Python bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona do toolkitu Qt5
 Name:		python3-%{module}
 Version:	5.15.11
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/PyQt5/
@@ -71,7 +72,9 @@ BuildRequires:	rpmbuild(macros) >= 2.016
 BuildRequires:	sip6 >= %{sip_ver}
 Requires:	python3-dbus >= 0.80
 Requires:	python3-libs >= 1:3.7
+%if %{with obsolete_py2}
 Obsoletes:	python-PyQt5 < 5.15.7-1
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -91,6 +94,28 @@ QtMultimediaWidgets, QtNetwork, QtNfc, QtOpenGL, QtPositioning,
 QtPrintSupport, QtQml, QtQuick, QtQuickWidgets, QtSensors,
 QtSerialPort, QtSql, QtSvg, QtTest, QtTextToSpeech, QtWebChannel,
 QtWebSockets, QtX11Extras oraz QtXmlPatterns.
+
+%package devel
+Summary:	SIP files needed to build other bindings based on Qt5
+Summary(pl.UTF-8):	Pliki SIP potrzebne do budowania innych wiązań opartych na Qt5
+Group:		Development/Languages/Python
+Requires:	sip6 >= %{sip_ver}
+%if %{with obsolete_py2}
+Obsoletes:	python-PyQt5-devel < 5.3.2-4
+Obsoletes:	sip-PyQt5 < 5.15.11-2
+%else
+# unfortunately boolean caps are not allowed for Obsoletes
+#Obsoletes:	(sip-PyQt5 >= 5.15.6 with sip-PyQt5 < 5.15.11-2)
+Obsoletes:	sip-PyQt5 >= 5.15.6
+%endif
+
+%description devel
+SIP files needed to build other bindings for C++ classes that inherit
+from any of the Qt5 classes (e.g. KDE or your own).
+
+%description devel -l pl.UTF-8
+Pliki SIP potrzebne do budowania innych wiązań do klas C++
+dziedziczących z dowolnej klasy Qt5 (np. KDE lub własnych).
 
 %package uic
 Summary:	pyuic5 development tool for Python
@@ -136,21 +161,6 @@ Examples code demonstrating how to use the Python bindings for Qt5.
 
 %description examples -l pl.UTF-8
 Przykładowy kod demonstrujący jak używać PyQt5.
-
-%package -n sip-PyQt5
-Summary:	SIP files needed to build other bindings based on Qt5
-Summary(pl.UTF-8):	Pliki SIP potrzebne do budowania innych wiązań opartych na Qt5
-Group:		Development/Languages/Python
-Requires:	sip6 >= %{sip_ver}
-Obsoletes:	python-PyQt5-devel < 5.3.2-4
-
-%description -n sip-PyQt5
-SIP files needed to build other bindings for C++ classes that inherit
-from any of the Qt5 classes (e.g. KDE or your own).
-
-%description -n sip-PyQt5 -l pl.UTF-8
-Pliki SIP potrzebne do budowania innych wiązań do klas C++
-dziedziczących z dowolnej klasy Qt5 (np. KDE lub własnych).
 
 %package -n Qt5Designer-plugin-pyqt5
 Summary:	Qt5 Designer plugin for Python plugins with widgets
@@ -250,9 +260,9 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/PyQt5/pylupdate_main.py
 %{py3_sitedir}/PyQt5/pyrcc_main.py
 %{py3_sitedir}/PyQt5/__pycache__
+%{py3_sitedir}/PyQt5-%{version}.dist-info
 
 # annotations (-devel?)
-%{py3_sitedir}/PyQt5-%{version}.dist-info
 %{?with_enginio:%{py3_sitedir}/PyQt5/Enginio.pyi}
 %{py3_sitedir}/PyQt5/QtBluetooth.pyi
 %{py3_sitedir}/PyQt5/QtCore.pyi
@@ -291,6 +301,11 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/PyQt5/QtXmlPatterns.pyi
 %{py3_sitedir}/PyQt5/py.typed
 
+%files devel
+%defattr(644,root,root,755)
+%{py3_sitedir}/PyQt5/bindings
+%{py3_sitedir}/PyQt5/sip.pyi
+
 %files uic
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pyuic5
@@ -304,11 +319,6 @@ rm -rf $RPM_BUILD_ROOT
 %files examples
 %defattr(644,root,root,755)
 %{_examplesdir}/%{name}-%{version}
-
-%files -n sip-PyQt5
-%defattr(644,root,root,755)
-%{py3_sitedir}/PyQt5/bindings
-%{py3_sitedir}/PyQt5/sip.pyi
 
 %files -n Qt5Designer-plugin-pyqt5
 %defattr(644,root,root,755)
