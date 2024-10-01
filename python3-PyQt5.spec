@@ -100,8 +100,10 @@ Summary:	SIP files needed to build other bindings based on Qt5
 Summary(pl.UTF-8):	Pliki SIP potrzebne do budowania innych wiązań opartych na Qt5
 Group:		Development/Languages/Python
 Requires:	sip6 >= %{sip_ver}
+Obsoletes:	python3-PyQt5-sip-devel < 2:5
 %if %{with obsolete_py2}
 Obsoletes:	python-PyQt5-devel < 5.3.2-4
+Obsoletes:	python-PyQt5-sip-devel < 2:5
 Obsoletes:	sip-PyQt5 < 5.15.11-2
 %else
 # unfortunately boolean caps are not allowed for Obsoletes
