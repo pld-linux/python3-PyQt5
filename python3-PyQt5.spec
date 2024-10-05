@@ -16,7 +16,7 @@ Summary:	Python bindings for the Qt5 toolkit
 Summary(pl.UTF-8):	Wiązania Pythona do toolkitu Qt5
 Name:		python3-%{module}
 Version:	5.15.11
-Release:	2
+Release:	3
 License:	GPL v3
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/PyQt5/
